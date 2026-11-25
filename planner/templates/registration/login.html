@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitPlan Log In</title>
+</head>
+<body>
+  <h1>Log in to FitPlan</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit">Log in</button>
+  </form>
+
+  <p>New to FitPlan? <a href="{% url 'signup' %}">Create an account</a></p>
+</body>
+</html>
