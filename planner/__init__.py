@@ -1,0 +1,1 @@
+"""FitPlan planner application."""
