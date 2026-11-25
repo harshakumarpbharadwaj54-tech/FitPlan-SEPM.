@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitPlan Weekly Plan</title>
+</head>
+<body>
+  <h1>Your weekly plan</h1>
+
+  {% if plan %}
+    <p>Week starting {{ plan.week_start }}</p>
+    <p>Status: {{ plan.get_status_display }}</p>
+
+    <ul>
+      {% for item in plan.items.all %}
+        <li>
+          {{ item.get_day_display }}:
+          {% if item.is_rest_day %}
+            Rest day
+          {% else %}
+            {{ item.activity }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You don’t have a weekly draft yet.</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Create weekly draft</button>
+  </form>
+
+  <p>This is a draft for review, not medical advice.</p>
+
+  <nav>
+    <a href="{% url 'profile' %}">Profile</a>
+    <a href="{% url 'workout_list' %}">Workouts</a>
+    <a href="{% url 'meal_list' %}">Meals</a>
+  </nav>
+</body>
+</html>
