@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitPlan Meals</title>
+</head>
+<body>
+  <h1>Your meals</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save meal</button>
+  </form>
+
+  <h2>Meal history</h2>
+  <ul>
+    {% for meal in meals %}
+      <li>{{ meal.meal_date }} — {{ meal.description }}</li>
+    {% empty %}
+      <li>No meals recorded yet.</li>
+    {% endfor %}
+  </ul>
+
+  <nav>
+    <a href="{% url 'profile' %}">Profile</a>
+    <a href="{% url 'workout_list' %}">Workouts</a>
+  </nav>
+</body>
+</html>
