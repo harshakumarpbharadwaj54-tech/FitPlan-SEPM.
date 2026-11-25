@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitPlan Profile</title>
+</head>
+<body>
+  <h1>Your fitness profile</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save profile</button>
+  </form>
+
+  <nav>
+    <a href="{% url 'workout_list' %}">Workouts</a>
+    <a href="{% url 'meal_list' %}">Meals</a>
+  </nav>
+</body>
+</html>
