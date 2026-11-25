@@ -1,0 +1,1 @@
+"""FitPlan Django project package."""
